@@ -4,12 +4,13 @@ const int clock_speed = 4194304;
 cpu::cpu()
 {
 	memset(memory, 0, sizeof(memory));
-	FILE *fp = fopen("/Users/jinhankim/github/gameboy/ROM/DMG_ROM.bin", "rb");
+//    FILE *fp = fopen("/Users/jinhankim/github/gameboy/ROM/dmg0_rom.bin", "rb");
+    FILE *fp = fopen("/Users/jinhankim/github/gameboy/ROM/[BIOS] Nintendo Game Boy Boot ROM (World).gb", "rb");
 	// Read bootstrap program from binary
 	fread(bootloader, sizeof(uint8_t), 256, fp);
 	fclose(fp);
 	// Tetris has no banking so we can read it all the way
-	FILE *rom = fopen("/Users/jinhankim/github/gameboy/ROM/Tetris (World).gb", "rb");
+	FILE *rom = fopen("/Users/jinhankim/github/gameboy/ROM/Zelda no Densetsu - Yume o Miru Shima (Japan).gb", "rb");
 	fread(memory, sizeof(uint8_t), 32768, rom);
 	fclose(rom);
 	pc = 0x0000;
